@@ -15,6 +15,10 @@ android {
     ndkVersion = androidNdkVersion
     buildToolsVersion = androidBuildToolsVersion
 
+    buildFeatures {
+        prefab = true
+    }
+
     defaultConfig {
         minSdk = androidMinSdkVersion
         targetSdk = androidTargetSdkVersion
@@ -22,6 +26,7 @@ android {
 
         externalNativeBuild {
             cmake {
+                arguments += listOf("-DANDROID_STL=none")
                 cppFlags += listOf("-std=c++20")
             }
         }
@@ -54,4 +59,8 @@ android {
             useLegacyPackaging = false
         }
     }
+}
+
+dependencies {
+    implementation(libs.cxx)
 }

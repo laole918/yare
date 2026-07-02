@@ -4,3 +4,6 @@ ndk = "29.0.14206865"
 
 [plugins]
 agp-lib = { id = "com.android.library", version.ref = "agp" }
+
+[libraries]
+cxx = { module = "org.lsposed.libcxx:libcxx", version.ref = "ndk" }
