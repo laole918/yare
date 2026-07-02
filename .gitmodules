@@ -1,0 +1,9 @@
+[submodule "yare/src/main/jni/external/dobby"]
+	path = yare/src/main/jni/external/dobby
+	url = https://github.com/LSPosed/Dobby.git
+[submodule "yare/src/main/jni/external/lsplant"]
+	path = yare/src/main/jni/external/lsplant
+	url = https://github.com/LSPosed/LSPlant.git
+[submodule "yare/src/main/jni/external/xz-embedded"]
+	path = yare/src/main/jni/external/xz-embedded
+	url = https://github.com/tukaani-project/xz-embedded
