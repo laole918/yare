@@ -3,6 +3,7 @@ agp = "8.9.3"
 ndk = "29.0.14206865"
 
 [plugins]
+agp-app = { id = "com.android.application", version.ref = "agp" }
 agp-lib = { id = "com.android.library", version.ref = "agp" }
 
 [libraries]

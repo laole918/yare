@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "yare"
+include(":sample")
 include(":yare")

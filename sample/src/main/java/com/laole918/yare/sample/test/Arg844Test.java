@@ -1,0 +1,16 @@
+package com.laole918.yare.sample.test;
+
+public final class Arg844Test extends Test {
+    public Arg844Test() {
+        super("target", long.class, int.class, int.class);
+    }
+
+    @Override
+    protected int testImpl() {
+        return target(1L, 2, 3);
+    }
+
+    private static int target(long a, int b, int c) {
+        return a == 1L && b == 2 && c == 3 ? SUCCESS : FAILED;
+    }
+}

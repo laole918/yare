@@ -18,8 +18,6 @@ if (CCACHE)
     set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE})
 endif ()
 
-find_package(cxx REQUIRED CONFIG)
-
 set(XZ_EMBEDDED_SOURCE
     external/xz-embedded/linux/lib/xz/xz_crc32.c
     external/xz-embedded/linux/lib/xz/xz_dec_lzma2.c
@@ -36,7 +34,6 @@ set(DOBBY_GENERATE_SHARED OFF CACHE INTERNAL "" FORCE)
 set(Plugin.SymbolResolver OFF CACHE INTERNAL "" FORCE)
 set(NearBranch OFF CACHE INTERNAL "" FORCE)
 add_subdirectory(external/dobby dobby)
-target_link_libraries(dobby cxx::cxx)
 get_property(DOBBY_INCLUDE_DIRECTORIES
     TARGET dobby
     PROPERTY INCLUDE_DIRECTORIES
@@ -52,6 +49,9 @@ set(LSPLANT_BUILD_SHARED OFF CACHE INTERNAL "" FORCE)
 add_subdirectory(${LSPLANT_JNI_DIR} lsplant)
 
 add_library(${PROJECT_NAME} SHARED
+    elf_image.cpp
+    hidden_api.cpp
+    profile_saver.cpp
     yare.cpp
     ${XZ_EMBEDDED_SOURCE}
 )
@@ -64,7 +64,6 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
     log
-    cxx::cxx
     dobby
     lsplant_static
 )

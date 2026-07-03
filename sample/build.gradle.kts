@@ -1,28 +1,31 @@
 plugins {
-    alias(libs.plugins.agp.lib)
+    alias(libs.plugins.agp.app)
 }
 
 val androidTargetSdkVersion: Int by rootProject.extra
 val androidMinSdkVersion: Int by rootProject.extra
 val androidBuildToolsVersion: String by rootProject.extra
 val androidCompileSdkVersion: Int by rootProject.extra
-val androidNdkVersion: String by rootProject.extra
 val androidCmakeVersion: String by rootProject.extra
 
 android {
-    namespace = "com.laole918.yare"
+    namespace = "com.laole918.yare.sample"
     compileSdk = androidCompileSdkVersion
-    ndkVersion = androidNdkVersion
     buildToolsVersion = androidBuildToolsVersion
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
+        applicationId = "com.laole918.yare.sample"
         minSdk = androidMinSdkVersion
         targetSdk = androidTargetSdkVersion
-        consumerProguardFiles("consumer-rules.pro")
+        versionCode = 1
+        versionName = "1.0"
 
         externalNativeBuild {
             cmake {
-                arguments += listOf("-DANDROID_STL=c++_static")
                 cppFlags += listOf("-std=c++20")
             }
         }
@@ -45,14 +48,12 @@ android {
 
     externalNativeBuild {
         cmake {
-            path = file("src/main/jni/CMakeLists.txt")
+            path = file("src/main/cpp/CMakeLists.txt")
             version = androidCmakeVersion
         }
     }
+}
 
-    packaging {
-        jniLibs {
-            useLegacyPackaging = false
-        }
-    }
+dependencies {
+    implementation(project(":yare"))
 }
