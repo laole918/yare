@@ -11,6 +11,7 @@ public final class Tests {
             new TestItem("Invoke Original Method", new InvokeOriginalMethodTest()),
             new TestItem("Method Replacement", new MethodReplacementTest()),
             new TestItem("Not Inited Hook", new NotInitedTest()),
+            new TestItem("Delay Hook", new DelayHookTest()),
             new TestItem("Proxy Hook", new ProxyTest()),
             new TestItem("Arg0 Hook", new Arg0Test()),
             new TestItem("Arg4 Hook", new Arg4Test()),
